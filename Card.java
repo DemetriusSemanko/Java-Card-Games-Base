@@ -1,4 +1,4 @@
-package card_games;
+package cardgames;
 
 import java.util.Random;
 
@@ -49,7 +49,7 @@ public class Card {
     public Card(String rank, String suit) {
         this.rank = rank;
         this.suit = suit;
-        this.revealed = true;
+        revealed = true;
     }
     /**
      * The rank constructor; Creates an instance of card with the passed rank.
@@ -63,14 +63,14 @@ public class Card {
      * Returns the String-type rank of this instance of Card
      */
     public String getRank() {
-        return this.rank;
+        return rank;
     }
     /**
      * Returns the int-type rank-value of this instance of Card
      * @return the int-type rank-value of this instance of Card; returns 0 if invalid rank is found in this instance of Card
      */
     public int getRankValue() {
-        switch(this.rank) {
+        switch(rank) {
             case "Ace": return 1;
             case "Two": return 2;
             case "Three": return 3;
@@ -92,14 +92,14 @@ public class Card {
      * @return the String-type suit of this instance of Card
      */
     public String getSuit() {
-        return this.suit;
+        return suit;
     }
     /**
      * Returns the boolean-type revealed-state of this instance of Card
      * @return the boolean-type revealed-state of this instance of Card
      */
     public boolean getRevealed() {
-        return this.revealed;
+        return revealed;
     }
     /** 
      * Sets the boolean-type revealed-state of this instance of Card
@@ -114,7 +114,7 @@ public class Card {
      * @return the String-type representation of this instance of Card
      */
     public String toString() {
-        if (this.revealed) { return this.rank + " of " + this.suit; } 
+        if (revealed) { return rank + " of " + suit; } 
         else { return "***HIDDEN***"; }
     }
 }

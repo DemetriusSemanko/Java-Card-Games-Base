@@ -1,3 +1,4 @@
+package cardgames;
 /**
  * Author: Demetrius Semanko
  * Purpose: This class is designed to represent a basic Deck in a card game.
@@ -5,26 +6,25 @@
  * Every Deck instance should contain
  */
 
-package card_games;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
-    private ArrayList<Card> deck = new ArrayList<Card>();
+    private ArrayList<Card> deck = new ArrayList<>();
     /**
      * Adds a Card-type element to this instance of Deck's ArrayList
      * @param card the Card-type element to be added to this instance of Deck's ArrayList
      */
     public void addCard(Card card) {
-        this.deck.add(card);
+        deck.add(card);
     }
     /**
      * Clears this Deck's ArrayList of all elements then adds a new deck of cards
      */
     public void freshDeck() {
-        this.deck.clear();
-        this.addDeck();
+        deck.clear();
+        addDeck();
     }
     /**
      * Adds one full deck of cards to this instance of Deck
@@ -32,7 +32,7 @@ public class Deck {
     private void addDeck() {
         for (int i = 0; i < Card.SUITS.length; i++) {
             for (int j = 0; j < Card.RANKS.length; j++) {
-                this.deck.add(new Card(Card.RANKS[j], Card.SUITS[i]));
+                deck.add(new Card(Card.RANKS[j], Card.SUITS[i]));
             }
         }
     }
@@ -43,20 +43,20 @@ public class Deck {
     public void addDeck(int amount) {
         if (amount >= 1) {
             for (int i = 1; i <= amount; i++) {
-                this.addDeck();
+                addDeck();
             }
         }
     }
     /**
      * Returns a Card-type instance from the passed index within this instance of Deck's ArrayList.
-     * Returns IllegalArgumentExcepetion if the passed index is invalid.
+     * Throws IndexOutOfBoundsExcepetion if the passed index is invalid.
      * @return returns a Card-type instance from the passed index within this instance of Deck's ArrayList.
      */
     public Card getCard(int index) {
-        if (index >= 0 && index < this.deck.size()) {
-            return this.deck.get(index);
+        if (index >= 0 && index < deck.size()) {
+            return deck.get(index);
         } else {
-            throw new IllegalArgumentException();
+            throw new IndexOutOfBoundsException();
         }
     }
     /**
@@ -66,15 +66,15 @@ public class Deck {
     public Card drawCard(boolean randomly) {
         if (randomly) {
             Random r = new Random();
-            int randInd = r.nextInt(this.deck.size());
+            int randInd = r.nextInt(deck.size());
 
-            Card returnCard = this.deck.get(randInd);
-            this.deck.remove(randInd);
+            Card returnCard = deck.get(randInd);
+            deck.remove(randInd);
 
             return returnCard;
         } else {
-            Card returnCard = this.deck.get(0);
-            this.deck.remove(0);
+            Card returnCard = deck.get(0);
+            deck.remove(0);
 
             return returnCard;
         }
@@ -84,20 +84,20 @@ public class Deck {
      * @return the int-type size of this Deck's ArrayList
      */
     public int size() {
-        return this.deck.size();
+        return deck.size();
     }
     /**
      * Shuffles this Deck's ArrayList elements once
      */
     private void shuffle() {
         Random r = new Random();
-        for (int i = 0; i < this.deck.size(); i++) {
-            int firstIndex = r.nextInt(this.deck.size() - 1);
-            int secondIndex = r.nextInt(this.deck.size() - 1);
+        for (int i = 0; i < deck.size(); i++) {
+            int firstIndex = r.nextInt(deck.size());
+            int secondIndex = r.nextInt(deck.size());
 
-            Card temp = this.deck.get(firstIndex);
-            this.deck.set(firstIndex, this.deck.get(secondIndex));
-            this.deck.set(secondIndex, temp);
+            Card temp = deck.get(firstIndex);
+            deck.set(firstIndex, deck.get(secondIndex));
+            deck.set(secondIndex, temp);
         }
     }
     /**
@@ -108,7 +108,7 @@ public class Deck {
     public void shuffle(int amount) {
         if (amount >= 1) {
             for (int i = 1; i <= amount; i++) {
-                this.shuffle();
+                shuffle();
             }
         }
     }
@@ -132,8 +132,8 @@ public class Deck {
 
     public String toString() {
         String outString = "";
-        for (int i = 0; i < this.deck.size(); i++) {
-            outString += this.deck.get(i).toString() + "\n";
+        for (int i = 0; i < deck.size(); i++) {
+            outString += deck.get(i).toString() + "\n";
         }
         return outString;
     }
