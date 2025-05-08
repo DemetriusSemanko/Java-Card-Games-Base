@@ -1,4 +1,10 @@
-package cardgames;
+package card_games;
+
+/**
+ * Author: Demetrius Semanko
+ * Purpose: This class is designed to represent a Card in a card game.
+ * Every Card has a rank, a suit, and a state of revelation.
+ */
 
 import java.util.Random;
 
@@ -6,7 +12,9 @@ public class Card {
     private String rank;
     private String suit;
     private boolean revealed;
-
+    /**
+     * String array of all possible card ranks in the Western card deck 
+     */
     public static final String[] RANKS = {
         "Ace",
         "Two",
@@ -22,7 +30,9 @@ public class Card {
         "Queen",
         "King"
     };
-
+    /*
+     * String array of all possible card suits in the Western card deck
+     */
     public static final String[] SUITS = {
         "Clubs",
         "Spades",
@@ -49,7 +59,7 @@ public class Card {
     public Card(String rank, String suit) {
         this.rank = rank;
         this.suit = suit;
-        revealed = true;
+        this.revealed = true;
     }
     /**
      * The rank constructor; Creates an instance of card with the passed rank.
@@ -63,14 +73,14 @@ public class Card {
      * Returns the String-type rank of this instance of Card
      */
     public String getRank() {
-        return rank;
+        return this.rank;
     }
     /**
      * Returns the int-type rank-value of this instance of Card
      * @return the int-type rank-value of this instance of Card; returns 0 if invalid rank is found in this instance of Card
      */
     public int getRankValue() {
-        switch(rank) {
+        switch(this.rank) {
             case "Ace": return 1;
             case "Two": return 2;
             case "Three": return 3;
@@ -84,22 +94,22 @@ public class Card {
             case "Jack": return 10;
             case "Queen": return 10;
             case "King": return 10;
-        }
-        return 0;
+       	    default: return 0;
+	}
     }
     /** 
      * Returns the String-type suit of this instance of Card
      * @return the String-type suit of this instance of Card
      */
     public String getSuit() {
-        return suit;
+        return this.suit;
     }
     /**
      * Returns the boolean-type revealed-state of this instance of Card
      * @return the boolean-type revealed-state of this instance of Card
      */
     public boolean getRevealed() {
-        return revealed;
+        return this.revealed;
     }
     /** 
      * Sets the boolean-type revealed-state of this instance of Card
@@ -114,7 +124,7 @@ public class Card {
      * @return the String-type representation of this instance of Card
      */
     public String toString() {
-        if (revealed) { return rank + " of " + suit; } 
+        if (this.revealed) { return this.rank + " of " + this.suit; } 
         else { return "***HIDDEN***"; }
     }
 }
